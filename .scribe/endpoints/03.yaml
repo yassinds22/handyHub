@@ -237,7 +237,7 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - PUT
+      - POST
     uri: 'api/products/{id}'
     metadata:
       groupName: 'Products Management'

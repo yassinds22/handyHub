@@ -22,7 +22,7 @@ class RegisterUserRequest extends FormRequest
         return [
             'name'      => 'required|string|max:255',
             'email'     => 'required|email|unique:users,email',
-            'password'  => 'string|min:6',
+            'password'  => '',
             'google_id' => 'string',
             'phone'     => 'nullable|string',
         ];

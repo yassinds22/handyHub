@@ -97,8 +97,8 @@
                                                     <li class="tocify-item level-2" data-unique="products-management-POSTapi-products">
                                 <a href="#products-management-POSTapi-products">Create New Product</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="products-management-PUTapi-products--id-">
-                                <a href="#products-management-PUTapi-products--id-">Update Product</a>
+                                                                                <li class="tocify-item level-2" data-unique="products-management-POSTapi-products--id-">
+                                <a href="#products-management-POSTapi-products--id-">Update Product</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="products-management-DELETEapi-products--id-">
                                 <a href="#products-management-DELETEapi-products--id-">Delete Product</a>
@@ -674,10 +674,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "brand_id=1"\
     --form "province_id=2"\
     --form "user_id=consequatur"\
-    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpFC49.tmp" \
-    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpFCA8.tmp" \
-    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpFCA9.tmp" \
-    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpFCAA.tmp" </code></pre></div>
+    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpB121.tmp" \
+    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpB1AF.tmp" \
+    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpB1BF.tmp" \
+    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpB1C0.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -962,7 +962,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFC49.tmp</code></p>
+<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpB121.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
@@ -973,7 +973,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCA8.tmp</code></p>
+<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpB1AF.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
@@ -984,7 +984,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Main image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCA9.tmp</code></p>
+<p>Main image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpB1BF.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
@@ -995,11 +995,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Secondary image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCAA.tmp</code></p>
+<p>optional Secondary image Example: <code>C:\Users\yassin\AppData\Local\Temp\phpB1C0.tmp</code></p>
         </div>
         </form>
 
-                    <h2 id="products-management-PUTapi-products--id-">Update Product</h2>
+                    <h2 id="products-management-POSTapi-products--id-">Update Product</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1007,12 +1007,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-PUTapi-products--id-">
+<span id="example-requests-POSTapi-products--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
+    <pre><code class="language-bash">curl --request POST \
     "http://localhost:8000/api/products/1" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
@@ -1029,10 +1029,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "brand_id=1"\
     --form "province_id=2"\
     --form "user_id=consequatur"\
-    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpFCAB.tmp" \
-    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpFCAC.tmp" \
-    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpFCBD.tmp" \
-    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpFCBE.tmp" </code></pre></div>
+    --form "main_image=@C:\Users\yassin\AppData\Local\Temp\phpB1D1.tmp" \
+    --form "sub_image=@C:\Users\yassin\AppData\Local\Temp\phpB1D2.tmp" \
+    --form "image1=@C:\Users\yassin\AppData\Local\Temp\phpB1D3.tmp" \
+    --form "image2=@C:\Users\yassin\AppData\Local\Temp\phpB1D4.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1065,14 +1065,14 @@ body.append('image1', document.querySelector('input[name="image1"]').files[0]);
 body.append('image2', document.querySelector('input[name="image2"]').files[0]);
 
 fetch(url, {
-    method: "PUT",
+    method: "POST",
     headers,
     body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-PUTapi-products--id-">
+<span id="example-responses-POSTapi-products--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -1100,50 +1100,50 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-PUTapi-products--id-" hidden>
+<span id="execution-results-POSTapi-products--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-PUTapi-products--id-"></span>:
+                id="execution-response-status-POSTapi-products--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-products--id-"
+    <pre class="json"><code id="execution-response-content-POSTapi-products--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-PUTapi-products--id-" hidden>
+<span id="execution-error-POSTapi-products--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-products--id-">
+    <pre><code id="execution-error-message-POSTapi-products--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-PUTapi-products--id-" data-method="PUT"
+<form id="form-POSTapi-products--id-" data-method="POST"
       data-path="api/products/{id}"
       data-authed="1"
       data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-products--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-products--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-products--id-"
-                    onclick="tryItOut('PUTapi-products--id-');">Try it out ⚡
+                    id="btn-tryout-POSTapi-products--id-"
+                    onclick="tryItOut('POSTapi-products--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-products--id-"
-                    onclick="cancelTryOut('PUTapi-products--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-products--id-"
+                    onclick="cancelTryOut('POSTapi-products--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-products--id-"
+                    id="btn-executetryout-POSTapi-products--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-darkblue">PUT</small>
+            <small class="badge badge-black">POST</small>
             <b><code>api/products/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
@@ -1152,7 +1152,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-products--id-"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-products--id-"
                value="Bearer {YOUR_SANCTUM_TOKEN}"
                data-component="header">
     <br>
@@ -1163,7 +1163,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-products--id-"
+                              name="Content-Type"                data-endpoint="POSTapi-products--id-"
                value="multipart/form-data"
                data-component="header">
     <br>
@@ -1174,7 +1174,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-products--id-"
+                              name="Accept"                data-endpoint="POSTapi-products--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -1186,7 +1186,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-products--id-"
+               step="any"               name="id"                data-endpoint="POSTapi-products--id-"
                value="1"
                data-component="url">
     <br>
@@ -1198,7 +1198,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="title"                data-endpoint="PUTapi-products--id-"
+                              name="title"                data-endpoint="POSTapi-products--id-"
                value="Toyota Camry"
                data-component="body">
     <br>
@@ -1209,7 +1209,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="description"                data-endpoint="PUTapi-products--id-"
+                              name="description"                data-endpoint="POSTapi-products--id-"
                value="A reliable and fuel-efficient car with modern features."
                data-component="body">
     <br>
@@ -1220,7 +1220,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="model_car"                data-endpoint="PUTapi-products--id-"
+                              name="model_car"                data-endpoint="POSTapi-products--id-"
                value="2024 XLE"
                data-component="body">
     <br>
@@ -1231,7 +1231,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>decimal</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="price"                data-endpoint="PUTapi-products--id-"
+                              name="price"                data-endpoint="POSTapi-products--id-"
                value="27000.00"
                data-component="body">
     <br>
@@ -1242,7 +1242,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="car_status"                data-endpoint="PUTapi-products--id-"
+                              name="car_status"                data-endpoint="POSTapi-products--id-"
                value="جديدة"
                data-component="body">
     <br>
@@ -1253,7 +1253,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="engine_number"                data-endpoint="PUTapi-products--id-"
+                              name="engine_number"                data-endpoint="POSTapi-products--id-"
                value="6"
                data-component="body">
     <br>
@@ -1264,7 +1264,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="fuel_type"                data-endpoint="PUTapi-products--id-"
+                              name="fuel_type"                data-endpoint="POSTapi-products--id-"
                value="بترول"
                data-component="body">
     <br>
@@ -1275,7 +1275,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="latitude"                data-endpoint="PUTapi-products--id-"
+                              name="latitude"                data-endpoint="POSTapi-products--id-"
                value="15.3694"
                data-component="body">
     <br>
@@ -1286,7 +1286,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="longitude"                data-endpoint="PUTapi-products--id-"
+                              name="longitude"                data-endpoint="POSTapi-products--id-"
                value="44.1910"
                data-component="body">
     <br>
@@ -1297,7 +1297,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="brand_id"                data-endpoint="PUTapi-products--id-"
+                              name="brand_id"                data-endpoint="POSTapi-products--id-"
                value="1"
                data-component="body">
     <br>
@@ -1308,7 +1308,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="province_id"                data-endpoint="PUTapi-products--id-"
+                              name="province_id"                data-endpoint="POSTapi-products--id-"
                value="2"
                data-component="body">
     <br>
@@ -1319,7 +1319,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="user_id"                data-endpoint="PUTapi-products--id-"
+                              name="user_id"                data-endpoint="POSTapi-products--id-"
                value="consequatur"
                data-component="body">
     <br>
@@ -1330,44 +1330,44 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="file" style="display: none"
-                              name="main_image"                data-endpoint="PUTapi-products--id-"
+                              name="main_image"                data-endpoint="POSTapi-products--id-"
                value=""
                data-component="body">
     <br>
-<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCAB.tmp</code></p>
+<p>The main car image. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpB1D1.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sub_image</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="file" style="display: none"
-                              name="sub_image"                data-endpoint="PUTapi-products--id-"
+                              name="sub_image"                data-endpoint="POSTapi-products--id-"
                value=""
                data-component="body">
     <br>
-<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCAC.tmp</code></p>
+<p>The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpB1D2.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image1</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="file" style="display: none"
-                              name="image1"                data-endpoint="PUTapi-products--id-"
+                              name="image1"                data-endpoint="POSTapi-products--id-"
                value=""
                data-component="body">
     <br>
-<p>optional The new main image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCBD.tmp</code></p>
+<p>optional The new main image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpB1D3.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>image2</code></b>&nbsp;&nbsp;
 <small>file</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="file" style="display: none"
-                              name="image2"                data-endpoint="PUTapi-products--id-"
+                              name="image2"                data-endpoint="POSTapi-products--id-"
                value=""
                data-component="body">
     <br>
-<p>optional The new secondary image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpFCBE.tmp</code></p>
+<p>optional The new secondary image. Example: <code>C:\Users\yassin\AppData\Local\Temp\phpB1D4.tmp</code></p>
         </div>
         </form>
 

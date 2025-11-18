@@ -18,10 +18,35 @@ class UserService{
 
 
         
-    public function store(array $data){
-        return $this->userRepository->Storeuser($data);
+public function store(array $data): array
+{
+    try {
+        $result = $this->userRepository->Storeuser($data);
 
+        if ($result['success']) {
+            return [
+                'success' => true,
+                'user' => $result['user'],
+                'status' => 201
+            ];
+        } else {
+            return [
+                'success' => false,
+                'message' => $result['message'] ?? 'Registration failed',
+                'status' => 500
+            ];
+        }
+
+    } catch (\Exception $e) {
+        \Illuminate\Support\Facades\Log::error('UserService store error: ' . $e->getMessage());
+        
+        return [
+            'success' => false,
+            'message' => 'Service error: ' . $e->getMessage(),
+            'status' => 500
+        ];
     }
+}
 
      public function login(array $credentials): array
     {

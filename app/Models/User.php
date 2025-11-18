@@ -54,8 +54,12 @@ class User extends Authenticatable
         ];
     }
 
-      public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
+
+    public function worker()
+{
+    return $this->hasOne(Worker::class);
+}
+
+
+
 }

@@ -49,10 +49,6 @@ public function register(RegisterUserRequest $request): JsonResponse
 {
     $data = $request->validated();
 
-    // تجاهل أي google_id تم إرساله
-    if (isset($data['google_id'])) {
-        unset($data['google_id']);
-    }
 
     $data['password'] = Hash::make($data['password']);
     $user = $this->userService->store($data);

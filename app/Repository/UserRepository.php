@@ -26,10 +26,32 @@ class UserRepository{
         return $user;
     
     }
-    public function Storeuser(array $data){
-        return $this->user::create($data);
+  public function Storeuser(array $data): array
+{
+    try {
+        $user = $this->user::create($data);
+        
+        return [
+            'success' => true,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'created_at' => $user->created_at,
+            ]
+        ];
 
+    } catch (\Exception $e) {
+        \Illuminate\Support\Facades\Log::error('Store user error: ' . $e->getMessage());
+        
+        return [
+            'success' => false,
+            'message' => $e->getMessage(),
+            'error' => 'Failed to create user'
+        ];
     }
+}
 
 
 
