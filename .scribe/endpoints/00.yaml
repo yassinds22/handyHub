@@ -6,7 +6,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/register_by_email
+    uri: api/register
     metadata:
       groupName: 'Authenticating Management'
       groupDescription: |-

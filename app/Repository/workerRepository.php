@@ -27,7 +27,7 @@ class workerRepository{ // تصحيح اسم الكلاس
     }
 
     public function find($id) {
-        return $this->worker->with(['province', 'district', 'service', 'user'])->findOrFail($id);
+        return $this->worker->with(['province', 'district', 'service', 'user'])->find($id);
     }
 
     public function deleteWorker($id) {

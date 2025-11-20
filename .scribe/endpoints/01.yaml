@@ -1,20 +1,19 @@
-name: 'Provinces Management'
-description: |-
-
-  APIs for managing provinces in the system.
+name: Provinces
+description: ''
 endpoints:
   -
     httpMethods:
       - GET
     uri: api/provinces
     metadata:
-      groupName: 'Provinces Management'
-      groupDescription: |-
-
-        APIs for managing provinces in the system.
+      groupName: Provinces
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get a list of all provinces.'
+      title: |-
+        Get a list of all provinces
+
+        Returns all provinces including id, name, and parent_id.
       description: ''
       authenticated: false
       deprecated: false
@@ -42,11 +41,18 @@ endpoints:
                 "parent_id": 0,
                 "created_at": "2025-10-13T14:36:35.000000Z",
                 "updated_at": "2025-10-13T14:36:35.000000Z"
+              },
+              {
+                "id": 2,
+                "name": "Aden",
+                "parent_id": 0,
+                "created_at": "2025-10-13T14:36:35.000000Z",
+                "updated_at": "2025-10-13T14:36:35.000000Z"
               }
             ]
           }
         headers: []
-        description: ''
+        description: Success
         custom: []
     responseFields: []
     auth: []

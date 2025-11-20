@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ProvinceController as AdminProvinceController;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProviceController;
+use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\ServiceRequestController;
 use App\Http\Controllers\Api\ServiceTypeController;
 use App\Http\Controllers\Api\WorkerController;
@@ -33,7 +34,7 @@ Route::get('/provinces/{provinceId}/districts', [ProviceController::class, 'dist
 
 
 ////////////-earch-///////////
-Route::get('/workers/search', [WorkerController::class, 'search']);
+Route::get('/workers/search', [SearchController::class, 'search']);
 
 
 

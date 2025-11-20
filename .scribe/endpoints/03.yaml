@@ -1,18 +1,156 @@
-name: 'Products Management'
-description: |-
-
-  APIs for managing car products (Cars for sale).
+name: Workers
+description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: api/products
+      - GET
+    uri: api/worker
     metadata:
-      groupName: 'Products Management'
+      groupName: Workers
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Create New Product'
+      title: ''
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_SANCTUM_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+            {
+              "worker_id": 1,
+              "worker_name": "yassin",
+              "worker_phone": "7777777777",
+              "service_id": 5,
+              "service_name": "كهربائي",
+              "experience_years": 3,
+              "bio": "Expert electrician",
+              "province_id": 3,
+              "province_name": "صنعاء",
+              "latitude": "15.36",
+              "longitude": "44.19",
+              "execution_date": "2025-02-19",
+              "status": "available",
+              "user_id": 10,
+              "user_name": "yassin",
+              "image": "http://example.com/storage/image.jpg"
+            }
+          ]
+        headers: []
+        description: Success
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer Bearer {YOUR_SANCTUM_TOKEN}'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/worker/{id}'
+    metadata:
+      groupName: Workers
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_SANCTUM_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the worker.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "worker_id": 1,
+              "worker_name": "yassin",
+              "worker_phone": "7777777777",
+              "service_id": 5,
+              "service_name": "كهربائي",
+              "experience_years": 3,
+              "bio": "Expert electrician",
+              "province_id": 3,
+              "province_name": "صنعاء",
+              "latitude": "15.36",
+              "longitude": "44.19",
+              "execution_date": "2025-02-19",
+              "status": "available",
+              "user_id": 10,
+              "user_name": "yassin",
+              "image": "http://example.com/storage/image.jpg"
+          }
+        headers: []
+        description: Success
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+            "message": "Worker not found"
+          }
+        headers: []
+        description: 'Not Found'
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer Bearer {YOUR_SANCTUM_TOKEN}'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/worker
+    metadata:
+      groupName: Workers
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
       description: ''
       authenticated: true
       deprecated: false
@@ -26,159 +164,99 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      title:
-        name: title
-        description: 'The product title.'
+      service_id:
+        name: service_id
+        description: 'The service ID.'
         required: true
-        example: 'Toyota Corolla'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      description:
-        name: description
-        description: 'The product description.'
-        required: true
-        example: 'A reliable and fuel-efficient car.'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      model_car:
-        name: model_car
-        description: 'The model year or name.'
-        required: true
-        example: '2024 XLE'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      price:
-        name: price
-        description: 'Product price.'
-        required: true
-        example: '25000.00'
-        type: decimal
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      car_status:
-        name: car_status
-        description: 'Car condition.'
-        required: true
-        example: جديدة
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      engine_number:
-        name: engine_number
-        description: 'Engine type.'
-        required: true
-        example: '6'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      fuel_type:
-        name: fuel_type
-        description: 'Fuel type.'
-        required: true
-        example: بترول
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      latitude:
-        name: latitude
-        description: 'optional Latitude for map location.'
-        required: false
-        example: '15.3694'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      longitude:
-        name: longitude
-        description: 'optional Longitude for map location.'
-        required: false
-        example: '44.1910'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-      brand_id:
-        name: brand_id
-        description: 'Brand ID.'
-        required: true
-        example: 1
+        example: 5
         type: integer
         enumValues: []
         exampleWasSpecified: true
+        nullable: false
+        custom: []
+      experience_years:
+        name: experience_years
+        description: 'Number of years of experience.'
+        required: true
+        example: 4
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      bio:
+        name: bio
+        description: 'Brief description about the worker.'
+        required: true
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
         nullable: false
         custom: []
       province_id:
         name: province_id
         description: 'Province ID.'
         required: true
-        example: 2
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: true
         nullable: false
         custom: []
-      user_id:
-        name: user_id
-        description: 'The <code>id</code> of an existing record in the users table.'
+      latitude:
+        name: latitude
+        description: Latitude.
         required: true
-        example: consequatur
+        example: '15.3694'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      longitude:
+        name: longitude
+        description: Longitude.
+        required: true
+        example: '44.1910'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      execution_date:
+        name: execution_date
+        description: 'Available date.'
+        required: true
+        example: '2025-03-01'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      status:
+        name: status
+        description: ''
+        required: false
+        example: null
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-      main_image:
-        name: main_image
-        description: 'The main car image. Must be an image. Must not be greater than 2048 kilobytes.'
+      user_id:
+        name: user_id
+        description: ''
         required: false
         example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      sub_image:
-        name: sub_image
-        description: 'The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes.'
-        required: false
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      image1:
-        name: image1
-        description: 'Main image'
-        required: true
-        example: null
-        type: file
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-      image2:
-        name: image2
-        description: 'optional Secondary image'
+      image:
+        name: image
+        description: 'Optional profile photo.'
         required: false
         example: null
         type: file
@@ -187,44 +265,35 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      title: 'Toyota Corolla'
-      description: 'A reliable and fuel-efficient car.'
-      model_car: '2024 XLE'
-      price: '25000.00'
-      car_status: جديدة
-      engine_number: '6'
-      fuel_type: بترول
+      service_id: 5
+      experience_years: 4
+      bio: consequatur
+      province_id: 3
       latitude: '15.3694'
       longitude: '44.1910'
-      brand_id: 1
-      province_id: 2
-      user_id: consequatur
+      execution_date: '2025-03-01'
     fileParameters:
-      main_image: null
-      sub_image: null
-      image1: null
-      image2: null
+      image: null
     responses:
       -
         status: 201
         content: |-
           {
-           "success": true,
-           "message": "Product created successfully.",
-           "data": { ... }
+            "status": true,
+            "message": "Worker created successfully",
+            "data": {
+              "service_id": 5,
+              "experience_years": 4,
+              "bio": "Expert plumber",
+              "province_id": 3,
+              "latitude": "15.3694",
+              "longitude": "44.1910",
+              "execution_date": "2025-03-01",
+              "user_id": 12
+            }
           }
         headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-           "success": false,
-           "message": "Failed to create product: [error message]"
-          }
-        headers: []
-        description: ''
+        description: Created
         custom: []
     responseFields: []
     auth:
@@ -237,14 +306,15 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - POST
-    uri: 'api/products/{id}'
+      - PUT
+      - PATCH
+    uri: 'api/worker/{id}'
     metadata:
-      groupName: 'Products Management'
+      groupName: Workers
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Update Product'
+      title: ''
       description: ''
       authenticated: true
       deprecated: false
@@ -256,7 +326,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the product to update.'
+        description: 'The worker ID.'
         required: true
         example: 1
         type: integer
@@ -269,101 +339,31 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      title:
-        name: title
-        description: 'optional The new title.'
+      service_id:
+        name: service_id
+        description: 'optional Updated service ID.'
         required: false
-        example: 'Toyota Camry'
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      description:
-        name: description
-        description: 'The product description.'
-        required: true
-        example: 'A reliable and fuel-efficient car with modern features.'
-        type: string
+        example: 17
+        type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-      model_car:
-        name: model_car
-        description: 'The model name or number. Must not be greater than 255 characters.'
-        required: true
-        example: '2024 XLE'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      price:
-        name: price
-        description: 'optional The new price.'
+      experience_years:
+        name: experience_years
+        description: 'optional Updated years of experience.'
         required: false
-        example: '27000.00'
-        type: decimal
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      car_status:
-        name: car_status
-        description: 'The status of the car.'
-        required: true
-        example: جديدة
-        type: string
+        example: 17
+        type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-      engine_number:
-        name: engine_number
-        description: 'Engine type (4, 6, 8).'
-        required: true
-        example: '6'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      fuel_type:
-        name: fuel_type
-        description: 'Fuel type.'
-        required: true
-        example: بترول
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      latitude:
-        name: latitude
-        description: 'The latitude for map location.'
+      bio:
+        name: bio
+        description: 'optional Updated biography.'
         required: false
-        example: '15.3694'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      longitude:
-        name: longitude
-        description: 'The longitude for map location.'
-        required: false
-        example: '44.1910'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      brand_id:
-        name: brand_id
-        description: 'The brand ID. The <code>id</code> of an existing record in the brands table.'
-        required: true
-        example: 1
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -371,9 +371,49 @@ endpoints:
         custom: []
       province_id:
         name: province_id
-        description: 'The province ID. The <code>id</code> of an existing record in the provinces table.'
-        required: true
-        example: 2
+        description: 'optional Province ID.'
+        required: false
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      latitude:
+        name: latitude
+        description: 'optional Latitude.'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      longitude:
+        name: longitude
+        description: 'optional Longitude.'
+        required: false
+        example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      execution_date:
+        name: execution_date
+        description: 'optional Updated date.'
+        required: false
+        example: consequatur
+        type: date
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      status:
+        name: status
+        description: ''
+        required: false
+        example: null
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -381,47 +421,17 @@ endpoints:
         custom: []
       user_id:
         name: user_id
-        description: 'The <code>id</code> of an existing record in the users table.'
-        required: true
-        example: consequatur
+        description: ''
+        required: false
+        example: null
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-      main_image:
-        name: main_image
-        description: 'The main car image. Must be an image. Must not be greater than 2048 kilobytes.'
-        required: false
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      sub_image:
-        name: sub_image
-        description: 'The secondary image for the car. Must be an image. Must not be greater than 2048 kilobytes.'
-        required: false
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      image1:
-        name: image1
-        description: 'optional The new main image.'
-        required: false
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      image2:
-        name: image2
-        description: 'optional The new secondary image.'
+      image:
+        name: image
+        description: 'optional Updated worker image.'
         required: false
         example: null
         type: file
@@ -430,279 +440,35 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      title: 'Toyota Camry'
-      description: 'A reliable and fuel-efficient car with modern features.'
-      model_car: '2024 XLE'
-      price: '27000.00'
-      car_status: جديدة
-      engine_number: '6'
-      fuel_type: بترول
-      latitude: '15.3694'
-      longitude: '44.1910'
-      brand_id: 1
-      province_id: 2
-      user_id: consequatur
+      service_id: 17
+      experience_years: 17
+      bio: consequatur
+      province_id: 17
+      latitude: consequatur
+      longitude: consequatur
+      execution_date: consequatur
     fileParameters:
-      main_image: null
-      sub_image: null
-      image1: null
-      image2: null
+      image: null
     responses:
       -
         status: 200
         content: |-
           {
-           "success": true,
-           "message": "Product updated successfully.",
-           "data": {
-               "id": 1,
-               "title": "Toyota Camry",
-               "price": "27000.00",
-               "updated_at": "2025-10-14T10:00:00Z"
-           }
+            "status": true,
+            "message": "Worker updated successfully",
+            "data": {
+              "experience_years": 5,
+              "bio": "Updated worker info"
+            }
           }
         headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-           "success": false,
-           "message": "Failed to update product: [error message]"
-          }
-        headers: []
-        description: ''
+        description: Updated
         custom: []
     responseFields: []
     auth:
       - headers
       - Authorization
       - 'Bearer Bearer {YOUR_SANCTUM_TOKEN}'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/products/{id}'
-    metadata:
-      groupName: 'Products Management'
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Delete Product'
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer {YOUR_SANCTUM_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the product to delete.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-           "success": true,
-           "message": "Product deleted successfully."
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-           "success": false,
-           "message": "Failed to delete product: [error message]"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer Bearer {YOUR_SANCTUM_TOKEN}'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/products
-    metadata:
-      groupName: 'Products Management'
-      groupDescription: |-
-
-        APIs for managing car products (Cars for sale).
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get All Products'
-      description: |-
-        Retrieve a list of all products (cars) in the system.
-        Each product includes main_image_url and sub_image_url for the associated images.
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-           "success": true,
-           "data": [
-               {
-                   "id": 1,
-                   "title": "Toyota Corolla",
-                   "description": "A reliable and efficient car",
-                   "model_car": "2024",
-                   "price": "25000.00",
-                   "car_status": "جديدة",
-                   "engine_number": "6",
-                   "fuel_type": "بترول",
-                   "latitude": "15.3694",
-                   "longitude": "44.1910",
-                   "brand_id": 1,
-                   "province_id": 2,
-                   "created_at": "2025-10-13T14:36:35.000000Z",
-                   "updated_at": "2025-10-13T14:36:35.000000Z",
-                   "main_image_url": "http://example.com/storage/products/main_image.jpg",
-                   "sub_image_url": "http://example.com/storage/products/sub_image.jpg"
-               }
-           ]
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-           "success": false,
-           "message": "Failed to fetch products: [error message]"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/products/{id}'
-    metadata:
-      groupName: 'Products Management'
-      groupDescription: |-
-
-        APIs for managing car products (Cars for sale).
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Show Product'
-      description: |-
-        Retrieve a single product by its ID.
-        Includes main_image_url and sub_image_url for the associated images.
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the product.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-           "success": true,
-           "data": {
-               "id": 1,
-               "title": "Toyota Corolla",
-               "description": "A reliable and efficient car",
-               "model_car": "2024",
-               "price": "25000.00",
-               "main_image_url": "http://example.com/storage/products/main_image.jpg",
-               "sub_image_url": "http://example.com/storage/products/sub_image.jpg"
-           }
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 404
-        content: |-
-          {
-           "success": false,
-           "message": "Product not found"
-          }
-        headers: []
-        description: ''
-        custom: []
-      -
-        status: 500
-        content: |-
-          {
-           "success": false,
-           "message": "Failed to fetch product: [error message]"
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth: []
     controller: null
     method: null
     route: null

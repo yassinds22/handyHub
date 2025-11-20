@@ -10,34 +10,51 @@ use Illuminate\Http\Request;
 class ServiceTypeController extends Controller
 {
     public $serviceType;
-    public function __construct(ServiceTypeService $serviceTypeService){
-        $this->serviceType=$serviceTypeService;
+
+    public function __construct(ServiceTypeService $serviceTypeService)
+    {
+        $this->serviceType = $serviceTypeService;
     }
+
     /**
-     * Display a listing of the resource.
+     * @group Service Types
+     * Get all service types
+     *
+     * Returns a list of all available service types.
+     *
+     * @response 200 scenario="Success" {
+     *   "id": 1,
+     *   "name": "Electricity",
+    
+     * }
      */
     public function index()
     {
         return $this->serviceType->getAll();
-        //
     }
 
- 
-
-
-    
-
     /**
-     * Display the specified resource.
+     * @group Service Types
+     * Get a service type by ID
+     *
+     * Retrieve the details of a specific service type.
+     *
+     * @urlParam id integer required The ID of the service type. Example: 1
+     *
+     * @response 200 scenario="Success" {
+     *   "id": 1,
+     *   "name": "Plumbing",
+     *   "description": "Water and pipe services",
+     *   "status": "active"
+     * }
+     *
+     * @response 404 scenario="Not Found" {
+     *   "message": "Service Type not found"
+     * }
      */
-    public function show( $id)
+    public function show($id)
     {
-       return $this->serviceType->getById($id);
-        //
+        return $this->serviceType->getById($id);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
 
 }

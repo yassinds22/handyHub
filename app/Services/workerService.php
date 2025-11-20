@@ -14,11 +14,7 @@ class workerService {
    public function getAll() {
     $workers = $this->workerRepository->all();
 
-    // أضف روابط الصور لكل منتج
-    $workers->each(function($worker) {
-        $worker->main_image_url = $worker->getFirstMediaUrl('main_image');
-        $worker->sub_image_url  = $worker->getFirstMediaUrl('sub_image');
-    });
+
 
     return $workers;
 }
