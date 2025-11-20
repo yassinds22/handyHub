@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProvinceRequest;
 use App\Services\ProvinceService;
-use Illuminate\Http\Request;
+
 
 /**
  * @group Provinces Management
@@ -41,8 +41,26 @@ class ProvinceController extends Controller
     {
         return $this->provinceService->getAll();
     }
+    public function store(StoreProvinceRequest $request){
+         return $this->provinceService->saveProvince($request->validated());
 
+    }
+    public function show($id)
+{
+    return $this->provinceService->getById($id);
+}
+public function edit($id){
+    $data=$this->provinceService->getById($id);
+    return view('',compact('data'));
+}
+
+public function upadte(StoreProvinceRequest $request ,$id){
+    return $this->provinceService->updateProvince($id,$request->validated());
+}
   
+public function destory($id){
+ return $this->provinceService->deleteProvinceById($id);
+}
 
 
   

@@ -1,15 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ProvinceController;
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Admin\ProvinceController as AdminProvinceController;
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ProviceController;
 use App\Http\Controllers\Api\ServiceRequestController;
 use App\Http\Controllers\Api\ServiceTypeController;
 use App\Http\Controllers\Api\WorkerController;
-use App\Models\Service;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,7 +26,15 @@ Route::post('register/google', [AuthController::class, 'registerWithGoogle'])->n
 Route::post('login', [AuthController::class, 'login'])->name('api.login');
 
 // ---------------- Provinces Management ----------------
-Route::apiResource('provinces', ProvinceController::class);
+Route::apiResource('provinces', ProviceController::class);
+// Route::get('/provinces/main', [ProviceController::class, 'main']);
+Route::get('/provinces/{provinceId}/districts', [ProviceController::class, 'districts']);
+
+
+
+////////////-earch-///////////
+Route::get('/workers/search', [WorkerController::class, 'search']);
+
 
 
 
@@ -41,8 +47,8 @@ Route::apiResource('provinces', ProvinceController::class);
 Route::middleware('auth:sanctum')->group(function () {
 
      Route::resource('worker', WorkerController::class)
-        ->only(['store','destroy']);
+        ->only(['store','update','destroy']);
 
     Route::resource('serviceRequest', ServiceRequestController::class)
-        ->only(['store', 'destroy']);
+        ->only(['store','update', 'destroy']);
 });

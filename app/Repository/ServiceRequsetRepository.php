@@ -23,8 +23,8 @@ class ServiceRequsetRepository{ // تصحيح اسم الكلاس
         return $serviceRequest;
     }
 
-    public function all() {
-        return $this->serviceRequest->all();
+    public function getAll() {
+        return $this->serviceRequest->get();
     }
 
     public function find($id) {

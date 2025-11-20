@@ -55,10 +55,34 @@ class User extends Authenticatable
     }
 
 
-    public function worker()
-{
-    return $this->hasOne(Worker::class);
-}
+public function workerProfile()
+    {
+        return $this->hasOne(Worker::class, 'user_id');
+    }
+
+    //  العلاقة مع طلبات الخدمة كعميل
+    public function serviceRequests()
+    {
+        return $this->hasMany(ServiceRequest::class, 'client_id');
+    }
+
+   
+
+    //  نطاق للحرفيين فقط
+    public function scopeWorkers($query)
+    {
+        return $query->where('user_type', 'worker');
+    }
+
+    // 🎯 نطاق للعملاء فقط
+    public function scopeClients($query)
+    {
+        return $query->where('user_type', 'client');
+    }
+
+  
+
+  
 
 
 

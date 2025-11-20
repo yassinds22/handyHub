@@ -31,4 +31,23 @@ class ProvinceService{
     return $this->provinceRepository->deleteProvince($id);
 }
 
+
+
+
+    // ------------------------------------
+    // 🌟 دوال الفلترة الجديدة
+    // ------------------------------------
+
+    /** جلب المحافظات الرئيسية */
+    public function getMainProvinces()
+    {
+        return $this->provinceRepository->getMainProvinces();
+    }
+
+    /** جلب المديريات لمحافظة محددة */
+    public function getDistricts($provinceId)
+    {
+        return $this->provinceRepository->getDistrictsByProvince($provinceId);
+    }
+
 }

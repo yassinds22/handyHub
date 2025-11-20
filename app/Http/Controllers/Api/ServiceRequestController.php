@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreServiceRequestRequest;
 use App\Services\ServiceRequestService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceRequestController extends Controller
 {
@@ -18,7 +19,27 @@ class ServiceRequestController extends Controller
      */
     public function index()
     {
-        return $this->serviceRequestService->getAll();
+        $service_request= $this->serviceRequestService->getAll();
+              
+           $formatted = $service_request->map(function ($service_request) {
+            return [
+                'service_request_id'=> $service_request->id,
+                'service_id'=> $service_request->service_id,
+                'description' => $service_request->description,
+                'province_id' => $service_request->province_id,
+                
+                'latitude'=>$service_request->latitude,
+                'longitude'=>$service_request->longitude,
+                'execution_date'=>$service_request->execution_date,
+                'status'=>$service_request->status,
+                'user_id'=>$service_request->user_id,
+
+                'image'       => $service_request->getFirstMedia('image_service_request')?->getUrl(),
+            ];
+        });
+
+        // Return JSON response
+        return response()->json($formatted);
         //
     }
 
@@ -35,7 +56,14 @@ class ServiceRequestController extends Controller
      */
     public function store(StoreServiceRequestRequest $request)
     {
-        return $this->serviceRequestService->saveServiceRequse($request->validated(),$request->file('image'));
+        $data=$request->validated();
+        $data['user_id']=Auth::id();
+         $this->serviceRequestService->saveServiceRequse($data,$request->file('image'));
+               return response()->json([
+        'status' => true,
+        'message' => 'successfully!',
+        'data' => $data
+    ], 201);
         //
     }
 
@@ -44,30 +72,67 @@ class ServiceRequestController extends Controller
      */
     public function show(string $id)
     {
-        //
+       $service_request= $this->serviceRequestService->getById($id);
+        
+          
+            return response()->json( [
+                'service_request_id'=> $service_request->id,
+                'service_id'=> $service_request->service_id,
+                'description' => $service_request->description,
+                'province_id' => $service_request->province_id,
+                
+                'latitude'=>$service_request->latitude,
+                'longitude'=>$service_request->longitude,
+                'execution_date'=>$service_request->execution_date,
+                'status'=>$service_request->status,
+                'user_id'=>$service_request->user_id,
+
+                'image' => $service_request->getFirstMedia('image_service_request')?->getUrl(),
+           ] );
+     
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreServiceRequestRequest $request, string $id)
     {
+        $data=$request->validated();
+        $data['user_id']=Auth::id();
+         $this->serviceRequestService->updateServiceRequest($id,$data,$request->file('image'));
+             return response()->json([
+        'status' => true,
+        'message' => 'successfully!',
+        'data' => $data
+    ], 201);
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
+        $data= $this->serviceRequestService->deleteServiceRequest($id);
+      
+            return response()->json([
+        'status' => true,
+        'message' => 'successfully!',
+        'data' => $data
+    ], 201);
+
+          
+    
+
+        
+        
+       
         //
     }
+
+    
+
 }

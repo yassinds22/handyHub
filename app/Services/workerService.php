@@ -39,13 +39,7 @@ class workerService {
   public function getById($id) {
     $worker = $this->workerRepository->find($id);
 
-    if (!$worker) {
-        return null;
-    }
 
-    // جلب رابط الصورة الرئيسية والصورة الفرعية (إن وجدت)
-    $worker->main_image_url = $worker->getFirstMediaUrl('mages_url');
-    $worker->sub_image_url  = $worker->getFirstMediaUrl('sub_image');
 
     return $worker;
 }
@@ -60,9 +54,70 @@ class workerService {
             if ($worker->hasMedia('mages_url')) {
                 $worker->clearMediaCollection('mages_url');
             }
-            $worker->addMedia($mages_url)->toMediaCollection('main_image');
+            $worker->addMedia($mages_url)->toMediaCollection('mages_url');
         }
 
        
+    }
+
+
+
+
+    // 🔍 البحث حسب الموقع (اسم المحافظة/المديرية)
+    public function filterWorkersByLocation($provinceName = null, $districtName = null)
+    {
+        $workers = $this->workerRepository->filterByLocation($provinceName, $districtName);
+        return $this->formatWorkersResponse($workers);
+    }
+
+    // 🔍 البحث حسب ID الموقع
+    public function filterWorkersByLocationId($provinceId = null, $districtId = null)
+    {
+        $workers = $this->workerRepository->filterByLocationId($provinceId, $districtId);
+        return $this->formatWorkersResponse($workers);
+    }
+
+
+
+     private function formatWorkersResponse($workers)
+    {
+        return $workers->map(function ($worker) {
+            $formatted = [
+                'worker_id' => $worker->id,
+                'service_id' => $worker->service_id,
+                'service_name' => $worker->service->name ?? 'غير محدد',
+                'experience_years' => $worker->experience_years,
+                'bio' => $worker->bio,
+                'province_id' => $worker->province_id,
+                'province_name' => $worker->province->name ?? 'غير محدد',
+                'district_id' => $worker->district_id,
+                'district_name' => $worker->district->name ?? 'غير محدد',
+                'latitude' => $worker->latitude,
+                'longitude' => $worker->longitude,
+                'execution_date' => $worker->execution_date,
+                'status' => $worker->status,
+                'user_id' => $worker->user_id,
+                'user_name' => $worker->user->name ?? 'غير معروف',
+                'user_phone' => $worker->user->phone ?? 'غير متوفر',
+                'rating' => $worker->rating ?? 0,
+                'image'       => $worker->getFirstMedia('mages_url')?->getUrl(),
+            ];
+
+            // إضافة المسافة إذا كانت موجودة
+            if (isset($worker->distance)) {
+                $formatted['distance_km'] = round($worker->distance, 2);
+                $formatted['distance_text'] = $this->formatDistance($worker->distance);
+            }
+
+            return $formatted;
+        });
+    }
+
+    private function formatDistance($distanceKm)
+    {
+        if ($distanceKm < 1) {
+            return round($distanceKm * 1000) . ' متر';
+        }
+        return round($distanceKm, 1) . ' كم';
     }
 }

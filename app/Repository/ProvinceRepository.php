@@ -42,4 +42,23 @@ class ProvinceRepository{
 }
 
 
+
+
+    // ----------------------------
+    // 🌟 الفلترة هنا
+    // ----------------------------
+
+    /** جلب المحافظات الرئيسية فقط */
+    public function getMainProvinces()
+    {
+        return $this->province->where('parent_id', 0)->orderBy('name')->get();
+    }
+
+    /** جلب المديريات حسب المحافظة */
+    public function getDistrictsByProvince($provinceId)
+    {
+        return $this->province->where('parent_id', $provinceId)->orderBy('name')->get();
+    }
+
+
 }

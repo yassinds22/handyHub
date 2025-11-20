@@ -19,13 +19,46 @@ class ServiceRequest extends Model implements HasMedia
     ];
 
 
-        public function province()
+
+
+
+
+/////////////////////////////
+public function client()
     {
-        return $this->belongsTo(Province::class);
+        return $this->belongsTo(User::class, 'client_id');
     }
-    public function user()
-{   
-    return $this->belongsTo(User::class);
-}
+
+    //  العلاقة مع الحرفي
+    public function worker()
+    {
+        return $this->belongsTo(Worker::class, 'worker_id');
+    }
+
+    //  العلاقة مع الخدمة
+    public function service()
+    {
+        return $this->belongsTo(Service::class, 'service_id');
+    }
+
+    //  العلاقة مع المحافظة
+    public function province()
+    {
+        return $this->belongsTo(Province::class, 'province_id');
+    }
+
+    //  العلاقة مع المديرية
+    public function district()
+    {
+        return $this->belongsTo(Province::class, 'district_id');
+    }
+
+   
+
+  
+
+  
+
+  
     //
 }

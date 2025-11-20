@@ -13,10 +13,10 @@ class ServiceRequestService {
     }
 
    public function getAll() {
-    $workers = $this->serviceRequsetRepository->all();
+   return $this->serviceRequsetRepository->getAll();
 
 
-    return $workers;
+   
 }
 
 
@@ -26,28 +26,21 @@ class ServiceRequestService {
         return $worker;
     }
 
-    public function updateWorker($id, array $data, $mages_url = null) {
-        $worker = $this->serviceRequsetRepository->updateServiceRequset($id, $data); // تصحيح: تغيير $brand إلى $worker
-        $this->uploadImage($worker, $mages_url);
-        return $worker->fresh();
+    public function updateServiceRequest($id, array $data, $mages_url = null) {
+        $serviceRequest = $this->serviceRequsetRepository->updateServiceRequset($id, $data); // تصحيح: تغيير $brand إلى $worker
+        $this->uploadImage($serviceRequest, $mages_url);
+        return $serviceRequest->fresh();
     }
 
   public function getById($id) {
     $worker = $this->serviceRequsetRepository->find($id);
 
-    if (!$worker) {
-        return null;
-    }
-
-    // جلب رابط الصورة الرئيسية والصورة الفرعية (إن وجدت)
-    $worker->main_image_url = $worker->getFirstMediaUrl('mages_url');
-    $worker->sub_image_url  = $worker->getFirstMediaUrl('sub_image');
-
+   
     return $worker;
 }
 
 
-    public function deleteWorkerById($id) {
+    public function deleteServiceRequest($id) {
         return $this->serviceRequsetRepository->deleteServiceRequset($id);
     }
 
