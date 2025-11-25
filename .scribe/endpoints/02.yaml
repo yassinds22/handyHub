@@ -1,4 +1,4 @@
-name: Search
+name: 'Workers Search'
 description: ''
 endpoints:
   -
@@ -6,16 +6,17 @@ endpoints:
       - GET
     uri: api/workers/search
     metadata:
-      groupName: Search
+      groupName: 'Workers Search'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: |-
-        Search workers
-
-        This endpoint allows searching workers using multiple filters such as:
-        province name, district name, province ID, district ID, keywords, service type, experience, and distance.
-      description: ''
+      title: 'Search for workers using location, IDs, and multiple advanced filters.'
+      description: |-
+        This API allows searching for workers by:
+        - Province or district name
+        - Province or district ID
+        - Geolocation coordinates (latitude/longitude)
+        - Service type, minimum experience, and general search term
       authenticated: false
       deprecated: false
       custom: []
@@ -27,9 +28,9 @@ endpoints:
     queryParameters:
       province_name:
         name: province_name
-        description: 'The name of the province for filtering.'
+        description: 'Search by province name.'
         required: false
-        example: "Sana'a"
+        example: Sanaa
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -37,9 +38,9 @@ endpoints:
         custom: []
       district_name:
         name: district_name
-        description: 'The name of the district for filtering.'
+        description: 'Search by district name.'
         required: false
-        example: Al-Tahrir
+        example: 'Old City'
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -47,9 +48,9 @@ endpoints:
         custom: []
       province_id:
         name: province_id
-        description: 'The ID of the province.'
+        description: 'Search by province ID.'
         required: false
-        example: 3
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: true
@@ -57,57 +58,7 @@ endpoints:
         custom: []
       district_id:
         name: district_id
-        description: 'The ID of the district.'
-        required: false
-        example: 12
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      latitude:
-        name: latitude
-        description: 'User latitude for distance filtering.'
-        required: false
-        example: 15.3694
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      longitude:
-        name: longitude
-        description: 'User longitude for distance filtering.'
-        required: false
-        example: 44.191
-        type: number
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      radius:
-        name: radius
-        description: 'Search radius in KM (default: 3).'
-        required: false
-        example: 5
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      search:
-        name: search
-        description: 'General search term (worker name/bio)'
-        required: false
-        example: consequatur
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      service_id:
-        name: service_id
-        description: 'Filter workers by service ID.'
+        description: 'Search by district ID.'
         required: false
         example: 4
         type: integer
@@ -115,9 +66,49 @@ endpoints:
         exampleWasSpecified: true
         nullable: false
         custom: []
+      latitude:
+        name: latitude
+        description: 'User latitude.'
+        required: false
+        example: 15.3547
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      longitude:
+        name: longitude
+        description: 'User longitude.'
+        required: false
+        example: 44.207
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'General search term.'
+        required: false
+        example: plumber
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      service_id:
+        name: service_id
+        description: 'Filter by service ID.'
+        required: false
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
       min_experience:
         name: min_experience
-        description: 'Minimum years of experience.'
+        description: 'Minimum worker experience.'
         required: false
         example: 2
         type: integer
@@ -126,15 +117,14 @@ endpoints:
         nullable: false
         custom: []
     cleanQueryParameters:
-      province_name: "Sana'a"
-      district_name: Al-Tahrir
-      province_id: 3
-      district_id: 12
-      latitude: 15.3694
-      longitude: 44.191
-      radius: 5
-      search: consequatur
-      service_id: 4
+      province_name: Sanaa
+      district_name: 'Old City'
+      province_id: 1
+      district_id: 4
+      latitude: 15.3547
+      longitude: 44.207
+      search: plumber
+      service_id: 3
       min_experience: 2
     bodyParameters: []
     cleanBodyParameters: []
@@ -145,36 +135,34 @@ endpoints:
         content: |-
           {
             "success": true,
-            "message": "تم العثور على 3 حرفي",
+            "message": "5 workers found",
             "data": [
-              {
-                "worker_id": 1,
-                "service_id": 4,
-                "experience_years": 3,
-                "bio": "Expert electrician",
-                "province_id": 3,
-                "latitude": "15.369",
-                "longitude": "44.191",
-                "status": "available",
-                "image": "http://example.com/storage/workers/1.png"
-              }
+               {
+                 "id": 1,
+                 "name": "Ahmed Ali",
+                 "service": "Plumber",
+                 "experience": 4,
+                 "province": "Sanaa",
+                 "district": "Tahrer",
+                 "latitude": 15.3547,
+                 "longitude": 44.2070
+               }
             ],
             "search_type": "location_name",
             "filters_applied": {
-              "province_name": "Sana'a",
-              "district_name": "Al-Tahrir",
-              "province_id": null,
-              "district_id": null,
-              "latitude": "15.3694",
-              "longitude": "44.1910",
-              "radius_km": 3,
-              "search_term": "electric",
-              "service_id": 4,
-              "min_experience": 2
+               "province_name": "Sanaa",
+               "district_name": "Old City",
+               "province_id": null,
+               "parent_id": null,
+               "latitude": null,
+               "longitude": null,
+               "search_term": null,
+               "service_id": 3,
+               "min_experience": 2
             }
           }
         headers: []
-        description: Success
+        description: ''
         custom: []
     responseFields: []
     auth: []

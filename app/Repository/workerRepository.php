@@ -68,7 +68,7 @@ class workerRepository{ // تصحيح اسم الكلاس
         }
 
         if ($districtId) {
-            $query->where('district_id', $districtId);
+            $query->where('parent_id', $districtId);
         }
 
         return $query->get();

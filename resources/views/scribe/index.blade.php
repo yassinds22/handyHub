@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost:8000";
+        var tryItOutBaseUrl = "https://handyHub.dev-options.com";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -91,19 +91,6 @@ Returns all provinces including id, name, and parent_id.</a>
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-search" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="search">
-                    <a href="#search">Search</a>
-                </li>
-                                    <ul id="tocify-subheader-search" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="search-GETapi-workers-search">
-                                <a href="#search-GETapi-workers-search">Search workers
-
-This endpoint allows searching workers using multiple filters such as:
-province name, district name, province ID, district ID, keywords, service type, experience, and distance.</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
                     <ul id="tocify-header-service-requests" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="service-requests">
                     <a href="#service-requests">Service Requests</a>
@@ -162,6 +149,16 @@ Retrieve the details of a specific service type.</a>
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-workers-search" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="workers-search">
+                    <a href="#workers-search">Workers Search</a>
+                </li>
+                                    <ul id="tocify-subheader-workers-search" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="workers-search-GETapi-workers-search">
+                                <a href="#workers-search-GETapi-workers-search">Search for workers using location, IDs, and multiple advanced filters.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
             </div>
 
     <ul class="toc-footer" id="toc-footer">
@@ -171,7 +168,7 @@ Retrieve the details of a specific service type.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 20, 2025</li>
+        <li>Last updated: November 25, 2025</li>
     </ul>
 </div>
 
@@ -180,7 +177,7 @@ Retrieve the details of a specific service type.</a>
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost:8000</code>
+    <strong>Base URL</strong>: <code>https://handyHub.dev-options.com</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -209,7 +206,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/register" \
+    "https://handyHub.dev-options.com/api/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -224,7 +221,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/register"
+    "https://handyHub.dev-options.com/api/register"
 );
 
 const headers = {
@@ -405,7 +402,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/login" \
+    "https://handyHub.dev-options.com/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -418,7 +415,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/login"
+    "https://handyHub.dev-options.com/api/login"
 );
 
 const headers = {
@@ -566,14 +563,14 @@ Returns all provinces including id, name, and parent_id.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/provinces" \
+    --get "https://handyHub.dev-options.com/api/provinces" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/provinces"
+    "https://handyHub.dev-options.com/api/provinces"
 );
 
 const headers = {
@@ -686,283 +683,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                <h1 id="search">Search</h1>
-
-    
-
-                                <h2 id="search-GETapi-workers-search">Search workers
-
-This endpoint allows searching workers using multiple filters such as:
-province name, district name, province ID, district ID, keywords, service type, experience, and distance.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-GETapi-workers-search">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/workers/search?province_name=Sana%27a&amp;district_name=Al-Tahrir&amp;province_id=3&amp;district_id=12&amp;latitude=15.3694&amp;longitude=44.191&amp;radius=5&amp;search=consequatur&amp;service_id=4&amp;min_experience=2" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/workers/search"
-);
-
-const params = {
-    "province_name": "Sana'a",
-    "district_name": "Al-Tahrir",
-    "province_id": "3",
-    "district_id": "12",
-    "latitude": "15.3694",
-    "longitude": "44.191",
-    "radius": "5",
-    "search": "consequatur",
-    "service_id": "4",
-    "min_experience": "2",
-};
-Object.keys(params)
-    .forEach(key =&gt; url.searchParams.append(key, params[key]));
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-workers-search">
-            <blockquote>
-            <p>Example response (200, Success):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;تم العثور على 3 حرفي&quot;,
-    &quot;data&quot;: [
-        {
-            &quot;worker_id&quot;: 1,
-            &quot;service_id&quot;: 4,
-            &quot;experience_years&quot;: 3,
-            &quot;bio&quot;: &quot;Expert electrician&quot;,
-            &quot;province_id&quot;: 3,
-            &quot;latitude&quot;: &quot;15.369&quot;,
-            &quot;longitude&quot;: &quot;44.191&quot;,
-            &quot;status&quot;: &quot;available&quot;,
-            &quot;image&quot;: &quot;http://example.com/storage/workers/1.png&quot;
-        }
-    ],
-    &quot;search_type&quot;: &quot;location_name&quot;,
-    &quot;filters_applied&quot;: {
-        &quot;province_name&quot;: &quot;Sana&#039;a&quot;,
-        &quot;district_name&quot;: &quot;Al-Tahrir&quot;,
-        &quot;province_id&quot;: null,
-        &quot;district_id&quot;: null,
-        &quot;latitude&quot;: &quot;15.3694&quot;,
-        &quot;longitude&quot;: &quot;44.1910&quot;,
-        &quot;radius_km&quot;: 3,
-        &quot;search_term&quot;: &quot;electric&quot;,
-        &quot;service_id&quot;: 4,
-        &quot;min_experience&quot;: 2
-    }
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-workers-search" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-workers-search"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-workers-search"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-workers-search" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-workers-search">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-workers-search" data-method="GET"
-      data-path="api/workers/search"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-workers-search', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-workers-search"
-                    onclick="tryItOut('GETapi-workers-search');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-workers-search"
-                    onclick="cancelTryOut('GETapi-workers-search');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-workers-search"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/workers/search</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-workers-search"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-workers-search"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>province_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="province_name"                data-endpoint="GETapi-workers-search"
-               value="Sana'a"
-               data-component="query">
-    <br>
-<p>The name of the province for filtering. Example: <code>Sana'a</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>district_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="district_name"                data-endpoint="GETapi-workers-search"
-               value="Al-Tahrir"
-               data-component="query">
-    <br>
-<p>The name of the district for filtering. Example: <code>Al-Tahrir</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>province_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="province_id"                data-endpoint="GETapi-workers-search"
-               value="3"
-               data-component="query">
-    <br>
-<p>The ID of the province. Example: <code>3</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>district_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="district_id"                data-endpoint="GETapi-workers-search"
-               value="12"
-               data-component="query">
-    <br>
-<p>The ID of the district. Example: <code>12</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>latitude</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="latitude"                data-endpoint="GETapi-workers-search"
-               value="15.3694"
-               data-component="query">
-    <br>
-<p>User latitude for distance filtering. Example: <code>15.3694</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>longitude</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="longitude"                data-endpoint="GETapi-workers-search"
-               value="44.191"
-               data-component="query">
-    <br>
-<p>User longitude for distance filtering. Example: <code>44.191</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>radius</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="radius"                data-endpoint="GETapi-workers-search"
-               value="5"
-               data-component="query">
-    <br>
-<p>Search radius in KM (default: 3). Example: <code>5</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="search"                data-endpoint="GETapi-workers-search"
-               value="consequatur"
-               data-component="query">
-    <br>
-<p>General search term (worker name/bio) Example: <code>consequatur</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>service_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="service_id"                data-endpoint="GETapi-workers-search"
-               value="4"
-               data-component="query">
-    <br>
-<p>Filter workers by service ID. Example: <code>4</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>min_experience</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="min_experience"                data-endpoint="GETapi-workers-search"
-               value="2"
-               data-component="query">
-    <br>
-<p>Minimum years of experience. Example: <code>2</code></p>
-            </div>
-                </form>
-
                 <h1 id="service-requests">Service Requests</h1>
 
     
@@ -981,7 +701,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/serviceRequest" \
+    --get "https://handyHub.dev-options.com/api/serviceRequest" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -989,7 +709,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/serviceRequest"
+    "https://handyHub.dev-options.com/api/serviceRequest"
 );
 
 const headers = {
@@ -1123,7 +843,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/serviceRequest/17" \
+    --get "https://handyHub.dev-options.com/api/serviceRequest/17" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1131,7 +851,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/serviceRequest/17"
+    "https://handyHub.dev-options.com/api/serviceRequest/17"
 );
 
 const headers = {
@@ -1275,7 +995,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/serviceRequest" \
+    "https://handyHub.dev-options.com/api/serviceRequest" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
@@ -1285,12 +1005,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "longitude=consequatur"\
     --form "execution_date=2025-02-15"\
     --form "service_id=17"\
-    --form "image=@C:\Users\yassin\AppData\Local\Temp\php797B.tmp" </code></pre></div>
+    --form "image=@C:\Users\yassin\AppData\Local\Temp\php58DD.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/serviceRequest"
+    "https://handyHub.dev-options.com/api/serviceRequest"
 );
 
 const headers = {
@@ -1515,7 +1235,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php797B.tmp</code></p>
+<p>Optional image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php58DD.tmp</code></p>
         </div>
         </form>
 
@@ -1533,7 +1253,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/serviceRequest/17" \
+    "https://handyHub.dev-options.com/api/serviceRequest/17" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
@@ -1543,12 +1263,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "longitude=consequatur"\
     --form "execution_date=consequatur"\
     --form "service_id=17"\
-    --form "image=@C:\Users\yassin\AppData\Local\Temp\php798C.tmp" </code></pre></div>
+    --form "image=@C:\Users\yassin\AppData\Local\Temp\php58DE.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/serviceRequest/17"
+    "https://handyHub.dev-options.com/api/serviceRequest/17"
 );
 
 const headers = {
@@ -1784,7 +1504,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php798C.tmp</code></p>
+<p>optional Image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php58DE.tmp</code></p>
         </div>
         </form>
 
@@ -1802,7 +1522,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/serviceRequest/17" \
+    "https://handyHub.dev-options.com/api/serviceRequest/17" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1810,7 +1530,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/serviceRequest/17"
+    "https://handyHub.dev-options.com/api/serviceRequest/17"
 );
 
 const headers = {
@@ -1952,14 +1672,14 @@ Returns a list of all available service types.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/serviceType" \
+    --get "https://handyHub.dev-options.com/api/serviceType" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/serviceType"
+    "https://handyHub.dev-options.com/api/serviceType"
 );
 
 const headers = {
@@ -2073,14 +1793,14 @@ Retrieve the details of a specific service type.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/serviceType/1" \
+    --get "https://handyHub.dev-options.com/api/serviceType/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/serviceType/1"
+    "https://handyHub.dev-options.com/api/serviceType/1"
 );
 
 const headers = {
@@ -2219,7 +1939,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/worker" \
+    --get "https://handyHub.dev-options.com/api/worker" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2227,7 +1947,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/worker"
+    "https://handyHub.dev-options.com/api/worker"
 );
 
 const headers = {
@@ -2367,7 +2087,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/worker/1" \
+    --get "https://handyHub.dev-options.com/api/worker/1" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2375,7 +2095,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/worker/1"
+    "https://handyHub.dev-options.com/api/worker/1"
 );
 
 const headers = {
@@ -2534,7 +2254,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/worker" \
+    "https://handyHub.dev-options.com/api/worker" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
@@ -2545,12 +2265,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "latitude=15.3694"\
     --form "longitude=44.1910"\
     --form "execution_date=2025-03-01"\
-    --form "image=@C:\Users\yassin\AppData\Local\Temp\php795A.tmp" </code></pre></div>
+    --form "image=@C:\Users\yassin\AppData\Local\Temp\php58BB.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/worker"
+    "https://handyHub.dev-options.com/api/worker"
 );
 
 const headers = {
@@ -2788,7 +2508,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional profile photo. Example: <code>C:\Users\yassin\AppData\Local\Temp\php795A.tmp</code></p>
+<p>Optional profile photo. Example: <code>C:\Users\yassin\AppData\Local\Temp\php58BB.tmp</code></p>
         </div>
         </form>
 
@@ -2806,7 +2526,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/worker/1" \
+    "https://handyHub.dev-options.com/api/worker/1" \
     --header "Authorization: Bearer {YOUR_SANCTUM_TOKEN}" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
@@ -2817,12 +2537,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "latitude=consequatur"\
     --form "longitude=consequatur"\
     --form "execution_date=consequatur"\
-    --form "image=@C:\Users\yassin\AppData\Local\Temp\php796B.tmp" </code></pre></div>
+    --form "image=@C:\Users\yassin\AppData\Local\Temp\php58CC.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/worker/1"
+    "https://handyHub.dev-options.com/api/worker/1"
 );
 
 const headers = {
@@ -3070,9 +2790,275 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Updated worker image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php796B.tmp</code></p>
+<p>optional Updated worker image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php58CC.tmp</code></p>
         </div>
         </form>
+
+                <h1 id="workers-search">Workers Search</h1>
+
+    
+
+                                <h2 id="workers-search-GETapi-workers-search">Search for workers using location, IDs, and multiple advanced filters.</h2>
+
+<p>
+</p>
+
+<p>This API allows searching for workers by:</p>
+<ul>
+<li>Province or district name</li>
+<li>Province or district ID</li>
+<li>Geolocation coordinates (latitude/longitude)</li>
+<li>Service type, minimum experience, and general search term</li>
+</ul>
+
+<span id="example-requests-GETapi-workers-search">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://handyHub.dev-options.com/api/workers/search?province_name=Sanaa&amp;district_name=Old+City&amp;province_id=1&amp;district_id=4&amp;latitude=15.3547&amp;longitude=44.207&amp;search=plumber&amp;service_id=3&amp;min_experience=2" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://handyHub.dev-options.com/api/workers/search"
+);
+
+const params = {
+    "province_name": "Sanaa",
+    "district_name": "Old City",
+    "province_id": "1",
+    "district_id": "4",
+    "latitude": "15.3547",
+    "longitude": "44.207",
+    "search": "plumber",
+    "service_id": "3",
+    "min_experience": "2",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-workers-search">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;5 workers found&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Ahmed Ali&quot;,
+            &quot;service&quot;: &quot;Plumber&quot;,
+            &quot;experience&quot;: 4,
+            &quot;province&quot;: &quot;Sanaa&quot;,
+            &quot;district&quot;: &quot;Tahrer&quot;,
+            &quot;latitude&quot;: 15.3547,
+            &quot;longitude&quot;: 44.207
+        }
+    ],
+    &quot;search_type&quot;: &quot;location_name&quot;,
+    &quot;filters_applied&quot;: {
+        &quot;province_name&quot;: &quot;Sanaa&quot;,
+        &quot;district_name&quot;: &quot;Old City&quot;,
+        &quot;province_id&quot;: null,
+        &quot;parent_id&quot;: null,
+        &quot;latitude&quot;: null,
+        &quot;longitude&quot;: null,
+        &quot;search_term&quot;: null,
+        &quot;service_id&quot;: 3,
+        &quot;min_experience&quot;: 2
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-workers-search" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-workers-search"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-workers-search"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-workers-search" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-workers-search">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-workers-search" data-method="GET"
+      data-path="api/workers/search"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-workers-search', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-workers-search"
+                    onclick="tryItOut('GETapi-workers-search');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-workers-search"
+                    onclick="cancelTryOut('GETapi-workers-search');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-workers-search"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/workers/search</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-workers-search"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-workers-search"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>province_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="province_name"                data-endpoint="GETapi-workers-search"
+               value="Sanaa"
+               data-component="query">
+    <br>
+<p>Search by province name. Example: <code>Sanaa</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>district_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="district_name"                data-endpoint="GETapi-workers-search"
+               value="Old City"
+               data-component="query">
+    <br>
+<p>Search by district name. Example: <code>Old City</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>province_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="province_id"                data-endpoint="GETapi-workers-search"
+               value="1"
+               data-component="query">
+    <br>
+<p>Search by province ID. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>district_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="district_id"                data-endpoint="GETapi-workers-search"
+               value="4"
+               data-component="query">
+    <br>
+<p>Search by district ID. Example: <code>4</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>latitude</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="latitude"                data-endpoint="GETapi-workers-search"
+               value="15.3547"
+               data-component="query">
+    <br>
+<p>User latitude. Example: <code>15.3547</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>longitude</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="longitude"                data-endpoint="GETapi-workers-search"
+               value="44.207"
+               data-component="query">
+    <br>
+<p>User longitude. Example: <code>44.207</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-workers-search"
+               value="plumber"
+               data-component="query">
+    <br>
+<p>General search term. Example: <code>plumber</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>service_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="service_id"                data-endpoint="GETapi-workers-search"
+               value="3"
+               data-component="query">
+    <br>
+<p>Filter by service ID. Example: <code>3</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>min_experience</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="min_experience"                data-endpoint="GETapi-workers-search"
+               value="2"
+               data-component="query">
+    <br>
+<p>Minimum worker experience. Example: <code>2</code></p>
+            </div>
+                </form>
 
             
 
