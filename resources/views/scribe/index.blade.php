@@ -155,7 +155,7 @@ Retrieve the details of a specific service type.</a>
                 </li>
                                     <ul id="tocify-subheader-workers-search" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="workers-search-GETapi-workers-search">
-                                <a href="#workers-search-GETapi-workers-search">Search for workers using location, IDs, and multiple advanced filters.</a>
+                                <a href="#workers-search-GETapi-workers-search">Search for workers using province/district, IDs, and multiple advanced filters.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -1005,7 +1005,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "longitude=consequatur"\
     --form "execution_date=2025-02-15"\
     --form "service_id=17"\
-    --form "image=@C:\Users\yassin\AppData\Local\Temp\php58DD.tmp" </code></pre></div>
+    --form "image=@C:\Users\yassin\AppData\Local\Temp\php3ED2.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1235,7 +1235,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php58DD.tmp</code></p>
+<p>Optional image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php3ED2.tmp</code></p>
         </div>
         </form>
 
@@ -1263,7 +1263,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "longitude=consequatur"\
     --form "execution_date=consequatur"\
     --form "service_id=17"\
-    --form "image=@C:\Users\yassin\AppData\Local\Temp\php58DE.tmp" </code></pre></div>
+    --form "image=@C:\Users\yassin\AppData\Local\Temp\php3EE2.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1504,7 +1504,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php58DE.tmp</code></p>
+<p>optional Image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php3EE2.tmp</code></p>
         </div>
         </form>
 
@@ -2265,7 +2265,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "latitude=15.3694"\
     --form "longitude=44.1910"\
     --form "execution_date=2025-03-01"\
-    --form "image=@C:\Users\yassin\AppData\Local\Temp\php58BB.tmp" </code></pre></div>
+    --form "image=@C:\Users\yassin\AppData\Local\Temp\php3DF5.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2508,7 +2508,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Optional profile photo. Example: <code>C:\Users\yassin\AppData\Local\Temp\php58BB.tmp</code></p>
+<p>Optional profile photo. Example: <code>C:\Users\yassin\AppData\Local\Temp\php3DF5.tmp</code></p>
         </div>
         </form>
 
@@ -2537,7 +2537,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "latitude=consequatur"\
     --form "longitude=consequatur"\
     --form "execution_date=consequatur"\
-    --form "image=@C:\Users\yassin\AppData\Local\Temp\php58CC.tmp" </code></pre></div>
+    --form "image=@C:\Users\yassin\AppData\Local\Temp\php3EA2.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2790,7 +2790,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Updated worker image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php58CC.tmp</code></p>
+<p>optional Updated worker image. Example: <code>C:\Users\yassin\AppData\Local\Temp\php3EA2.tmp</code></p>
         </div>
         </form>
 
@@ -2798,17 +2798,24 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     
 
-                                <h2 id="workers-search-GETapi-workers-search">Search for workers using location, IDs, and multiple advanced filters.</h2>
+                                <h2 id="workers-search-GETapi-workers-search">Search for workers using province/district, IDs, and multiple advanced filters.</h2>
 
 <p>
 </p>
 
-<p>This API allows searching for workers by:</p>
+<p>This API supports searching for workers using:</p>
 <ul>
-<li>Province or district name</li>
+<li>Province and district name (including combined format: &quot;province/district&quot;)</li>
 <li>Province or district ID</li>
 <li>Geolocation coordinates (latitude/longitude)</li>
-<li>Service type, minimum experience, and general search term</li>
+<li>Service type, minimum experience, and general search terms</li>
+</ul>
+<p>🔥 Special Note:
+The <code>province_name</code> parameter supports combined format such as:
+Example: &quot;صنعاء/التحرير&quot;</p>
+<ul>
+<li>&quot;صنعاء&quot; → Province name</li>
+<li>&quot;التحرير&quot; → District/parent name</li>
 </ul>
 
 <span id="example-requests-GETapi-workers-search">
@@ -2817,7 +2824,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://handyHub.dev-options.com/api/workers/search?province_name=Sanaa&amp;district_name=Old+City&amp;province_id=1&amp;district_id=4&amp;latitude=15.3547&amp;longitude=44.207&amp;search=plumber&amp;service_id=3&amp;min_experience=2" \
+    --get "https://handyHub.dev-options.com/api/workers/search?province_name=%D8%B5%D9%86%D8%B9%D8%A7%D8%A1%2F%D8%A7%D9%84%D8%AA%D8%AD%D8%B1%D9%8A%D8%B1&amp;district_name=%D8%A7%D9%84%D8%AA%D8%AD%D8%B1%D9%8A%D8%B1&amp;province_id=1&amp;district_id=4&amp;latitude=15.3547&amp;longitude=44.207&amp;search=plumber&amp;service_id=3&amp;min_experience=2" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -2828,8 +2835,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const params = {
-    "province_name": "Sanaa",
-    "district_name": "Old City",
+    "province_name": "صنعاء/التحرير",
+    "district_name": "التحرير",
     "province_id": "1",
     "district_id": "4",
     "latitude": "15.3547",
@@ -2868,20 +2875,21 @@ fetch(url, {
             &quot;name&quot;: &quot;Ahmed Ali&quot;,
             &quot;service&quot;: &quot;Plumber&quot;,
             &quot;experience&quot;: 4,
-            &quot;province&quot;: &quot;Sanaa&quot;,
-            &quot;district&quot;: &quot;Tahrer&quot;,
+            &quot;province&quot;: &quot;صنعاء&quot;,
+            &quot;district&quot;: &quot;التحرير&quot;,
             &quot;latitude&quot;: 15.3547,
             &quot;longitude&quot;: 44.207
         }
     ],
     &quot;search_type&quot;: &quot;location_name&quot;,
     &quot;filters_applied&quot;: {
-        &quot;province_name&quot;: &quot;Sanaa&quot;,
-        &quot;district_name&quot;: &quot;Old City&quot;,
+        &quot;province_name&quot;: &quot;صنعاء&quot;,
+        &quot;district_name&quot;: &quot;التحرير&quot;,
         &quot;province_id&quot;: null,
-        &quot;parent_id&quot;: null,
+        &quot;district_id&quot;: null,
         &quot;latitude&quot;: null,
         &quot;longitude&quot;: null,
+        &quot;radius_km&quot;: 3,
         &quot;search_term&quot;: null,
         &quot;service_id&quot;: 3,
         &quot;min_experience&quot;: 2
@@ -2965,10 +2973,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="province_name"                data-endpoint="GETapi-workers-search"
-               value="Sanaa"
+               value="صنعاء/التحرير"
                data-component="query">
     <br>
-<p>Search by province name. Example: <code>Sanaa</code></p>
+<p>Province name or &quot;province/district&quot;. Example: <code>صنعاء/التحرير</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>district_name</code></b>&nbsp;&nbsp;
@@ -2976,10 +2984,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="district_name"                data-endpoint="GETapi-workers-search"
-               value="Old City"
+               value="التحرير"
                data-component="query">
     <br>
-<p>Search by district name. Example: <code>Old City</code></p>
+<p>District (parent) name — optional when using &quot;province/district&quot;. Example: <code>التحرير</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>province_id</code></b>&nbsp;&nbsp;
@@ -2990,7 +2998,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="query">
     <br>
-<p>Search by province ID. Example: <code>1</code></p>
+<p>Province ID. Example: <code>1</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>district_id</code></b>&nbsp;&nbsp;
@@ -3001,7 +3009,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="4"
                data-component="query">
     <br>
-<p>Search by district ID. Example: <code>4</code></p>
+<p>District/parent ID. Example: <code>4</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>latitude</code></b>&nbsp;&nbsp;
@@ -3012,7 +3020,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="15.3547"
                data-component="query">
     <br>
-<p>User latitude. Example: <code>15.3547</code></p>
+<p>User latitude used for distance filtering. Example: <code>15.3547</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>longitude</code></b>&nbsp;&nbsp;
@@ -3034,7 +3042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="plumber"
                data-component="query">
     <br>
-<p>General search term. Example: <code>plumber</code></p>
+<p>Search keyword. Example: <code>plumber</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>service_id</code></b>&nbsp;&nbsp;
@@ -3056,7 +3064,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="2"
                data-component="query">
     <br>
-<p>Minimum worker experience. Example: <code>2</code></p>
+<p>Minimum experience in years. Example: <code>2</code></p>
             </div>
                 </form>
 

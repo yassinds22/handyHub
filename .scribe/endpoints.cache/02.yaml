@@ -12,13 +12,19 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Search for workers using location, IDs, and multiple advanced filters.'
+      title: 'Search for workers using province/district, IDs, and multiple advanced filters.'
       description: |-
-        This API allows searching for workers by:
-        - Province or district name
+        This API supports searching for workers using:
+        - Province and district name (including combined format: "province/district")
         - Province or district ID
         - Geolocation coordinates (latitude/longitude)
-        - Service type, minimum experience, and general search term
+        - Service type, minimum experience, and general search terms
+
+        🔥 Special Note:
+        The `province_name` parameter supports combined format such as:
+        Example: "صنعاء/التحرير"
+        - "صنعاء" → Province name
+        - "التحرير" → District/parent name
       authenticated: false
       deprecated: false
       custom: []
@@ -30,9 +36,9 @@ endpoints:
     queryParameters:
       province_name:
         name: province_name
-        description: 'Search by province name.'
+        description: 'Province name or "province/district".'
         required: false
-        example: Sanaa
+        example: صنعاء/التحرير
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -40,9 +46,9 @@ endpoints:
         custom: []
       district_name:
         name: district_name
-        description: 'Search by district name.'
+        description: 'District (parent) name — optional when using "province/district".'
         required: false
-        example: 'Old City'
+        example: التحرير
         type: string
         enumValues: []
         exampleWasSpecified: true
@@ -50,7 +56,7 @@ endpoints:
         custom: []
       province_id:
         name: province_id
-        description: 'Search by province ID.'
+        description: 'Province ID.'
         required: false
         example: 1
         type: integer
@@ -60,7 +66,7 @@ endpoints:
         custom: []
       district_id:
         name: district_id
-        description: 'Search by district ID.'
+        description: 'District/parent ID.'
         required: false
         example: 4
         type: integer
@@ -70,7 +76,7 @@ endpoints:
         custom: []
       latitude:
         name: latitude
-        description: 'User latitude.'
+        description: 'User latitude used for distance filtering.'
         required: false
         example: 15.3547
         type: number
@@ -90,7 +96,7 @@ endpoints:
         custom: []
       search:
         name: search
-        description: 'General search term.'
+        description: 'Search keyword.'
         required: false
         example: plumber
         type: string
@@ -110,7 +116,7 @@ endpoints:
         custom: []
       min_experience:
         name: min_experience
-        description: 'Minimum worker experience.'
+        description: 'Minimum experience in years.'
         required: false
         example: 2
         type: integer
@@ -119,8 +125,8 @@ endpoints:
         nullable: false
         custom: []
     cleanQueryParameters:
-      province_name: Sanaa
-      district_name: 'Old City'
+      province_name: صنعاء/التحرير
+      district_name: التحرير
       province_id: 1
       district_id: 4
       latitude: 15.3547
@@ -144,20 +150,21 @@ endpoints:
                  "name": "Ahmed Ali",
                  "service": "Plumber",
                  "experience": 4,
-                 "province": "Sanaa",
-                 "district": "Tahrer",
+                 "province": "صنعاء",
+                 "district": "التحرير",
                  "latitude": 15.3547,
                  "longitude": 44.2070
                }
             ],
             "search_type": "location_name",
             "filters_applied": {
-               "province_name": "Sanaa",
-               "district_name": "Old City",
+               "province_name": "صنعاء",
+               "district_name": "التحرير",
                "province_id": null,
-               "parent_id": null,
+               "district_id": null,
                "latitude": null,
                "longitude": null,
+               "radius_km": 3,
                "search_term": null,
                "service_id": 3,
                "min_experience": 2
